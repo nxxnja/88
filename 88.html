@@ -2,49 +2,147 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>My Simple Website</title>
-    <link rel="stylesheet" href="styles.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Robotic ARM by Abdellah Boujour</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 1rem;
+            text-align: center;
+        }
+        main {
+            padding: 2rem;
+        }
+        section {
+            margin-bottom: 2rem;
+            padding: 1rem;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2 {
+            color: #333;
+        }
+        p {
+            line-height: 1.6;
+        }
+        .datasheet {
+            list-style-type: none;
+            padding: 0;
+        }
+        .datasheet li {
+            margin-bottom: 0.5rem;
+        }
+        .datasheet a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        .datasheet a:hover {
+            text-decoration: underline;
+        }
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        .tabs button {
+            padding: 10px;
+            margin: 5px;
+            cursor: pointer;
+        }
+        .language-switch {
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+        .language-switch button {
+            padding: 10px;
+            cursor: pointer;
+        }
+    </style>
+    <script>
+        function switchLanguage(lang) {
+            const englishContent = document.querySelectorAll('.en');
+            const spanishContent = document.querySelectorAll('.es');
+            if (lang === 'en') {
+                englishContent.forEach(el => el.style.display = 'block');
+                spanishContent.forEach(el => el.style.display = 'none');
+            } else {
+                englishContent.forEach(el => el.style.display = 'none');
+                spanishContent.forEach(el => el.style.display = 'block');
+            }
+        }
+        function showTab(tabId) {
+            const tabs = document.querySelectorAll('.tab-content');
+            tabs.forEach(tab => tab.classList.remove('active'));
+            document.getElementById(tabId).classList.add('active');
+        }
+        window.onload = () => {
+            switchLanguage('en'); // Default to English
+        };
+    </script>
 </head>
 <body>
-    <!-- Header Section -->
+
     <header>
-        <h1>Welcome to My Website</h1>
-        <nav>
-            <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
+        <h1>Robotic ARM Project</h1>
+        <p>by Abdellah Boujour</p>
     </header>
 
-    <!-- Main Content Section -->
+    <div class="language-switch">
+        <button onclick="switchLanguage('en')">English</button>
+        <button onclick="switchLanguage('es')">Español</button>
+    </div>
+
     <main>
-        <section id="home">
-            <h2>Home</h2>
-            <p>This is the home section of the website.</p>
+        <section id="project-description">
+            <h2 class="en">Project Description</h2>
+            <h2 class="es">Descripción del Proyecto</h2>
+            <p class="en">Welcome to the Robotic ARM project page. Here, I will provide detailed information about the project, its objectives, and the technology used. The Robotic ARM project aims to create a versatile and efficient robotic hand that can be used in various applications, from industrial automation to medical assistance.</p>
+            <p class="es">Bienvenido a la página del proyecto Robotic ARM. Aquí, proporcionaré información detallada sobre el proyecto, sus objetivos y la tecnología utilizada. El proyecto Robotic ARM tiene como objetivo crear una mano robótica versátil y eficiente que pueda usarse en diversas aplicaciones, desde la automatización industrial hasta la asistencia médica.</p>
         </section>
 
-        <section id="about">
-            <h2>About</h2>
-            <p>Learn more about us in this section.</p>
+        <section id="datasheets">
+            <h2 class="en">Datasheets</h2>
+            <h2 class="es">Hojas de Datos</h2>
+            <ul class="datasheet">
+                <li><a href="ESP-wroom-32_datasheet.pdf" target="_blank">ESP-WROOM-32 Datasheet</a></li>
+                <li><a href="L298N_Motor_Driver_datasheet.pdf" target="_blank">L298N Motor Driver Datasheet</a></li>
+                <li><a href="WeMos_D1_R32_datasheet.pdf" target="_blank">WeMos D1 R32 Datasheet</a></li>
+            </ul>
         </section>
 
-        <section id="services">
-            <h2>Services</h2>
-            <p>We offer a variety of services. Here are some details about them.</p>
-        </section>
-
-        <section id="contact">
-            <h2>Contact</h2>
-            <p>Get in touch with us.</p>
+        <section id="tabs">
+            <h2 class="en">Robotic ARM Information</h2>
+            <h2 class="es">Información del Brazo Robótico</h2>
+            <div class="tabs">
+                <button onclick="showTab('usage')">Usage</button>
+                <button onclick="showTab('price')">Price</button>
+            </div>
+            <div id="usage" class="tab-content">
+                <h3 class="en">Uses of the Robotic ARM</h3>
+                <h3 class="es">Usos del Brazo Robótico</h3>
+                <p class="en">The Robotic ARM can be used in various fields such as industrial automation, medical assistance, research, and development, among others. It is designed to perform precise tasks, reduce human error, and increase efficiency.</p>
+                <p class="es">El Brazo Robótico se puede utilizar en varios campos, como la automatización industrial, la asistencia médica, la investigación y el desarrollo, entre otros. Está diseñado para realizar tareas precisas, reducir el error humano y aumentar la eficiencia.</p>
+            </div>
+            <div id="price" class="tab-content">
+                <h3 class="en">Price of the Robotic ARM</h3>
+                <h3 class="es">Precio del Brazo Robótico</h3>
+                <p class="en">The estimated price of the Robotic ARM project is around $500. This includes all components, assembly, and testing. The price may vary depending on specific requirements and customization options.</p>
+                <p class="es">El precio estimado del proyecto Brazo Robótico es de alrededor de $500. Esto incluye todos los componentes, ensamblaje y pruebas. El precio puede variar según los requisitos específicos y las opciones de personalización.</p>
+            </div>
         </section>
     </main>
 
-    <!-- Footer Section -->
     <footer>
-        <p>&copy; 2024 My Simple Website. All rights reserved.</p>
+        <p>&copy; 2024 Abdellah Boujour. All rights reserved.</p>
     </footer>
+
 </body>
 </html>
